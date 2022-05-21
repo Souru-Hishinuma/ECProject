@@ -20,16 +20,20 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 env = environ.Env()
 root = environ.Path(BASE_DIR / 'secrets')
 
+# 本番環境用
+# env.read_env(root('.env.prod'))
+
+# 開発環境用
 env.read_env(root('.env.dev'))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = env.str('SECRET_KEY')
+SECRET_KEY = env.str('SECRET_KEY')  # 変更
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = env.bool('DEBUG')
+DEBUG = env.bool('DEBUG')  # 変更
 
 ALLOWED_HOSTS = env.list('ALLOWED_HOSTS')
 
